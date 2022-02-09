@@ -1,15 +1,16 @@
 import { FC } from "react";
 import Router from "next/router";
 import { getAuth, signOut } from "firebase/auth";
-
+import { useLoginUser } from "../hooks/useLoginUser";
 import "../utils/firebase/init"; // Initialize FirebaseApp
-import { useAuthState } from "../hooks/useAuthState";
 
 export const SignInOrOutButton: FC = () => {
-  const { isSignedIn } = useAuthState();
+  const { AuthState } = useLoginUser();
 
-  if (isSignedIn) {
-    return <button onClick={() => signOut(getAuth())}>Sign-out</button>;
+  if (AuthState?.isSignedIn) {
+    return (
+      <button onClick={() => signOut(getAuth())}>{AuthState?.userId}</button>
+    );
   } else {
     return <button onClick={() => Router.push("/signin")}>Sign-in</button>;
   }
