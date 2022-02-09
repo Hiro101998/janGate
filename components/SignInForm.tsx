@@ -3,7 +3,7 @@ import {
   getAuth,
   EmailAuthProvider,
   // FacebookAuthProvider,
-  // GoogleAuthProvider,
+  GoogleAuthProvider,
   TwitterAuthProvider,
 } from "firebase/auth";
 import { auth } from "firebaseui";
@@ -16,10 +16,10 @@ const uiConfig: auth.Config = {
   signInOptions: [
     EmailAuthProvider.PROVIDER_ID,
     // FacebookAuthProvider.PROVIDER_ID,
-    // GoogleAuthProvider.PROVIDER_ID,
+    GoogleAuthProvider.PROVIDER_ID,
     TwitterAuthProvider.PROVIDER_ID,
   ],
-  signInSuccessUrl: "/",
+  signInSuccessUrl: "test",
 };
 
 export const SignInForm: FC = () => {
