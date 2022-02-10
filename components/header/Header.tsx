@@ -23,9 +23,13 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 import Image from "next/image";
+import RegisterModal from "../modal/RegisterModal";
 
 export const WithSubnavigation = () => {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const onClickRegister = () => {
+    onOpen();
+  };
 
   return (
     <Box position={"fixed"} width="100%" zIndex={1}>
@@ -83,6 +87,7 @@ export const WithSubnavigation = () => {
             ログイン
           </Button>
           <Button
+            onClick={onClickRegister}
             display={{ base: "none", md: "inline-flex" }}
             fontSize={"sm"}
             fontWeight={600}
@@ -97,10 +102,10 @@ export const WithSubnavigation = () => {
           </Button>
         </Stack>
       </Flex>
-
       <Collapse in={isOpen} animateOpacity>
         {/* <MobileNav /> */}
       </Collapse>
+      <RegisterModal isOpen={isOpen} onClose={onClose} />;
     </Box>
   );
 };
