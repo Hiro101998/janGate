@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   const app: FirebaseApp = getApp();
   const onClickRegister = () => onOpen();
 
-  const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <div>
