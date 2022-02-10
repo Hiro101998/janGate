@@ -1,7 +1,7 @@
 import { FC, useRef } from "react";
 import {
   getAuth,
-  //   EmailAuthProvider,
+  EmailAuthProvider,
   // FacebookAuthProvider,
   GoogleAuthProvider,
   //   TwitterAuthProvider,
@@ -25,7 +25,7 @@ import Router from "next/router";
 const uiConfig: auth.Config = {
   signInFlow: "popup",
   signInOptions: [
-    // EmailAuthProvider.PROVIDER_ID,
+    EmailAuthProvider.PROVIDER_ID,
     // FacebookAuthProvider.PROVIDER_ID,
     GoogleAuthProvider.PROVIDER_ID,
     // TwitterAuthProvider.PROVIDER_ID,
@@ -72,7 +72,10 @@ export const SignInForm: FC = () => {
         </Stack>
       </form>
       <Text align={"center"} mt={10} mb={10}>
-        ----または----
+        ----既にアカウントをお持ちの方----
+        <br />
+        （Googleアカウントでも登録できます。）
+        <br />
       </Text>
       <StyledFirebaseAuth firebaseAuth={getAuth()} uiConfig={uiConfig} />
     </>
