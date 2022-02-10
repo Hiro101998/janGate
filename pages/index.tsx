@@ -26,7 +26,7 @@ import {
   ModalCloseButton,
   ModalBody,
 } from "@chakra-ui/react";
-import { WithSubnavigation } from "../components/header/header";
+import { WithSubnavigation } from "../components/header/Header";
 
 const Home: NextPage = () => {
   const app: FirebaseApp = getApp();
