@@ -27,6 +27,7 @@ import {
   ModalBody,
 } from "@chakra-ui/react";
 import { WithSubnavigation } from "../components/header/Header";
+import RegisterModal from "../components/modal/RegisterModal";
 
 const Home: NextPage = () => {
   const app: FirebaseApp = getApp();
@@ -122,17 +123,7 @@ const Home: NextPage = () => {
       <Box>
         <Text align={"center"}>開発中の画面を貼り付ける</Text>
       </Box>
-
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>アカウントを作成</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <SignInForm />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <RegisterModal isOpen={isOpen} onClose={onClose} />
     </div>
   );
 };
