@@ -18,11 +18,22 @@ import {
   useColorModeValue,
   createIcon,
   StatArrow,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  useDisclosure,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
 } from "@chakra-ui/react";
 import { isBoxedPrimitive } from "util/types";
 
 const Home: NextPage = () => {
   const app: FirebaseApp = getApp();
+
+  const onClickRegister = () => onOpen();
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <div>
       <Head>
@@ -65,6 +76,7 @@ const Home: NextPage = () => {
               position={"relative"}
             >
               <Button
+                onClick={onClickRegister}
                 colorScheme={"green"}
                 bg={"green.400"}
                 rounded={"full"}
@@ -124,6 +136,17 @@ const Home: NextPage = () => {
       <Box>
         <Text align={"center"}>開発中の画面を貼り付ける</Text>
       </Box>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>アカウントを作成</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <SignInForm />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
       {/* <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
