@@ -5,8 +5,7 @@ import Image from "next/image";
 
 import { getApp, FirebaseApp } from "firebase/app";
 import "../utils/firebase/init"; // Initialize FirebaseApp
-import { SignInForm } from "../components/SignInForm";
-import { SignInOrOutButton } from "../components/SignInOrOutButton";
+import { SignInOrOutButton } from "../components/auth/SignInOrOutButton";
 import {
   Box,
   Heading,
@@ -27,12 +26,17 @@ import {
   ModalBody,
 } from "@chakra-ui/react";
 import { WithSubnavigation } from "../components/header/Header";
+import SignUpModal from "../components/modal/SignUpModal";
+import { useState } from "react";
 
 const Home: NextPage = () => {
   const app: FirebaseApp = getApp();
-  const onClickRegister = () => onOpen();
-
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [signUpFlg, setSignUpFlg] = useState(false);
+  const onClickSignUp = () => {
+    setSignUpFlg(true);
+    onOpen();
+  };
 
   return (
     <div>
@@ -80,7 +84,7 @@ const Home: NextPage = () => {
               position={"relative"}
             >
               <Button
-                onClick={onClickRegister}
+                onClick={onClickSignUp}
                 colorScheme={"green"}
                 bg={"green.400"}
                 rounded={"full"}
@@ -122,17 +126,7 @@ const Home: NextPage = () => {
       <Box>
         <Text align={"center"}>開発中の画面を貼り付ける</Text>
       </Box>
-
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>アカウントを作成</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <SignInForm />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <SignUpModal isOpen={isOpen} onClose={onClose} signUpFlg={signUpFlg} />
     </div>
   );
 };

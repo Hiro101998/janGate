@@ -1,4 +1,4 @@
-import { FC, useRef } from "react";
+import { FC, memo, useRef } from "react";
 import {
   getAuth,
   EmailAuthProvider,
@@ -10,7 +10,7 @@ import {
 import { auth } from "firebaseui";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
-import "../utils/firebase/init"; // Initialize FirebaseApp
+import "../../utils/firebase/init"; // Initialize FirebaseApp
 import {
   Button,
   FormControl,
@@ -33,7 +33,7 @@ const uiConfig: auth.Config = {
   signInSuccessUrl: "test",
 };
 
-export const SignInForm: FC = () => {
+const SignUpForm: FC = () => {
   const auth = getAuth();
   const nameRef = useRef(null);
   const emailRef = useRef(null);
@@ -44,12 +44,16 @@ export const SignInForm: FC = () => {
     const { email, password, name } = event.target.elements;
     if (name.value == "") {
       alert("ユーザー名を入力してください");
+    } else if (password.value.length < 6) {
+      alert("パスワードは6文字以上で設定してください");
+      {
+      }
     } else {
       createUserWithEmailAndPassword(auth, email.value, password.value)
         .then(() => Router.push("test"))
         .catch((error) => {
           console.log(error.code);
-          // alert(error);
+          alert(error);
         });
     }
   };
@@ -81,3 +85,4 @@ export const SignInForm: FC = () => {
     </>
   );
 };
+export default memo(SignUpForm);

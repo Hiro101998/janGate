@@ -6,8 +6,7 @@ import Image from "next/image";
 import { getApp, FirebaseApp } from "firebase/app";
 import "../utils/firebase/init"; // Initialize FirebaseApp
 
-import { SignInForm } from "../components/SignInForm";
-import { SignInOrOutButton } from "../components/SignInOrOutButton";
+import { SignInOrOutButton } from "../components/auth/SignInOrOutButton";
 
 const Home: NextPage = () => {
   const app: FirebaseApp = getApp();
