@@ -44,12 +44,16 @@ const SignUpForm: FC = () => {
     const { email, password, name } = event.target.elements;
     if (name.value == "") {
       alert("ユーザー名を入力してください");
+    } else if (password.value.length < 6) {
+      alert("パスワードは6文字以上で設定してください");
+      {
+      }
     } else {
       createUserWithEmailAndPassword(auth, email.value, password.value)
         .then(() => Router.push("test"))
         .catch((error) => {
           console.log(error.code);
-          // alert(error);
+          alert(error);
         });
     }
   };
