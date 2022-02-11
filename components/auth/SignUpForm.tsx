@@ -1,4 +1,4 @@
-import { FC, useRef } from "react";
+import { FC, memo, useRef } from "react";
 import {
   getAuth,
   EmailAuthProvider,
@@ -10,7 +10,7 @@ import {
 import { auth } from "firebaseui";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
-import "../utils/firebase/init"; // Initialize FirebaseApp
+import "../../utils/firebase/init"; // Initialize FirebaseApp
 import {
   Button,
   FormControl,
@@ -33,7 +33,7 @@ const uiConfig: auth.Config = {
   signInSuccessUrl: "test",
 };
 
-export const SignInForm: FC = () => {
+const SignUpForm: FC = () => {
   const auth = getAuth();
   const nameRef = useRef(null);
   const emailRef = useRef(null);
@@ -81,3 +81,4 @@ export const SignInForm: FC = () => {
     </>
   );
 };
+export default memo(SignUpForm);

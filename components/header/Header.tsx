@@ -23,11 +23,18 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 import Image from "next/image";
-import RegisterModal from "../modal/RegisterModal";
+import SignUpModal from "../modal/SignUpModal";
+import { useState } from "react";
 
 export const WithSubnavigation = () => {
+  const [signUpFlg, setSignUpFlg] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const onClickRegister = () => {
+  const onClickSignUp = () => {
+    setSignUpFlg(true);
+    onOpen();
+  };
+  const onClickSignIn = () => {
+    setSignUpFlg(false);
     onOpen();
   };
 
@@ -78,6 +85,7 @@ export const WithSubnavigation = () => {
           spacing={6}
         >
           <Button
+            onClick={onClickSignIn}
             as={"a"}
             fontSize={"sm"}
             fontWeight={400}
@@ -87,7 +95,7 @@ export const WithSubnavigation = () => {
             ログイン
           </Button>
           <Button
-            onClick={onClickRegister}
+            onClick={onClickSignUp}
             display={{ base: "none", md: "inline-flex" }}
             fontSize={"sm"}
             fontWeight={600}
@@ -105,7 +113,8 @@ export const WithSubnavigation = () => {
       <Collapse in={isOpen} animateOpacity>
         {/* <MobileNav /> */}
       </Collapse>
-      <RegisterModal isOpen={isOpen} onClose={onClose} />;
+      <SignUpModal isOpen={isOpen} onClose={onClose} signUpFlg={signUpFlg} />;
+      {/* <SignInModal isOpen={isOpen} onClose={onClose} /> */}
     </Box>
   );
 };
