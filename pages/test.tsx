@@ -7,6 +7,7 @@ import { getApp, FirebaseApp } from "firebase/app";
 import "../utils/firebase/init"; // Initialize FirebaseApp
 
 import { SignInOrOutButton } from "../components/auth/SignInOrOutButton";
+import { SimpleSlider } from "../components/slide/SlideTemplate";
 
 const Home: NextPage = () => {
   const app: FirebaseApp = getApp();
@@ -19,10 +20,12 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <p>ログイン成功です。</p>
+        <p>
+          <SimpleSlider />
+        </p>
       </main>
 
-      <footer>
+      {/* <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -33,7 +36,7 @@ const Home: NextPage = () => {
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
-      </footer>
+      </footer> */}
     </div>
   );
 };
