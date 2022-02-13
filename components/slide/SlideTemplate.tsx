@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper";
-import { Box, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Stack, Text } from "@chakra-ui/react";
 
 const testArr = [
   { number: 1, main: "aaa" },
@@ -23,7 +23,7 @@ export const SimpleSlider: FC = () => {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      h={"300"}
+      h={"500"}
       m={20}
     >
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
@@ -34,6 +34,18 @@ export const SimpleSlider: FC = () => {
             </SwiperSlide>
           );
         })}
+        <SwiperSlide>
+          <Text textAlign={"center"}>レクチャーはここまで。</Text>
+          <Text textAlign={"center"}>練習問題にチャレンジしよう！！</Text>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            mt={4}
+          >
+            <Button textAlign={"center"}>練習問題へ</Button>
+          </Box>
+        </SwiperSlide>
       </Swiper>
     </Box>
   );
