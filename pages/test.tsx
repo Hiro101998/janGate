@@ -5,9 +5,14 @@ import Image from "next/image";
 
 import { getApp, FirebaseApp } from "firebase/app";
 import "../utils/firebase/init"; // Initialize FirebaseApp
-
-import { SignInOrOutButton } from "../components/auth/SignInOrOutButton";
+import dynamic from "next/dynamic";
+import { Box } from "@chakra-ui/react";
 import { SimpleSlider } from "../components/slide/SlideTemplate";
+
+const GoogleSlides = dynamic(() => import("../components/slide/GoogleSlides"), {
+  ssr: false,
+});
+// import { SlideShow } from "../components/slide/GoogleSlides";
 
 const Home: NextPage = () => {
   const app: FirebaseApp = getApp();
@@ -20,9 +25,18 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <p>
-          <SimpleSlider />
-        </p>
+        {/* <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          h={"300"}
+          m={20}
+          pt={"15%"}
+        >
+          <GoogleSlides />
+        </Box> */}
+
+        <SimpleSlider />
       </main>
 
       {/* <footer>
